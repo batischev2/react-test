@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector, useDispatch } from 'react-redux'
+
+import './App.css'
+import { RootState } from './store'
+import { TableState } from '@tanstack/react-table'
 
 function App() {
+  const tables = useSelector((state: RootState) => state.tables)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h2>Tables</h2>
+      <nav>
+        <ul></ul>
+      </nav>
+      {tables.map(({ id, type }) => {
+        return (
+          <li>
+            <a key={id} href={`/contacts/1`}>
+              {type}
+            </a>
+          </li>
+        )
+      })}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
