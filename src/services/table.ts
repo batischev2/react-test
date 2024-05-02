@@ -1,20 +1,19 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 import { CompanyCHN, CompanyUSA } from '../types'
+import { Config } from '../config'
 
-export const pokemonApi = createApi({
-  reducerPath: 'pokemonApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+export const tableApi = createApi({
+  reducerPath: 'tableApi',
+  baseQuery: fetchBaseQuery({ baseUrl: Config.API_URL }),
   endpoints: (builder) => ({
-    getPokemonByName: builder.query<CompanyUSA, string>({
-      query: (name) => `pokemon/${name}`
+    getTableChina: builder.query<CompanyUSA, string>({
+      query: () => `online-table-chn`
     }),
-    getPokemonBySurname: builder.query<CompanyCHN, string>({
-      query: (name) => `pokemon/${name}`
+    getTableUsa: builder.query<CompanyCHN, string>({
+      query: () => `model-portfolio-usa`
     })
   })
 })
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
-export const { useGetPokemonByNameQuery } = pokemonApi
+export const { useGetTableChinaQuery, useGetTableUsaQuery } = tableApi

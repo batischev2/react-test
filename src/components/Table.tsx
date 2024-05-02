@@ -1,15 +1,15 @@
 import { useReactTable } from '@tanstack/react-table'
 import { useMemo } from 'react'
-import { useGetPokemonByNameQuery } from '../services/table'
+import { useGetTableChinaQuery, useGetTableUsaQuery } from '../services/table'
 
 export default function Table() {
-  // const columns = useMemo(() => [
+  const columns = useMemo(() => [
 
-  // ], []);
+  ], []);
 
-  // const { data, isLoading } = useGetPokemonByNameQuery({
+  const { data, error, isLoading } = useGetTableChinaQuery('bulbasaur')
 
-  // });
+  console.log(data, error, isLoading)
 
   // const filteredData = useMemo(() => data?.filter(d => d.isActive) ?? [], [data]);
 
@@ -18,5 +18,5 @@ export default function Table() {
   //   data: filteredData,
   // });
 
-  return <table>...</table>
+  return <div>13242</div>
 }

@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: '/table/:id',
+    path: 'table/:id',
     element: <Table />
   }
 ])
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <RouterProvider router={router} fallbackElement={<p>Loading...</p>} />
     </React.StrictMode>
   </Provider>
 )
