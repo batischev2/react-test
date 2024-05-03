@@ -14,7 +14,9 @@ function App() {
         {tables.map(({ id, type }) => {
           return (
             <div key={id}>
-              <Link to={`/table/${id}`}>{type}</Link>
+              <Link to={{ pathname: `/table/${id}` }} state={{ type }}>
+                {type}
+              </Link>
             </div>
           )
         })}

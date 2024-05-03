@@ -7,8 +7,8 @@ interface TableState {
 }
 
 const initialState: Array<TableState> = [
-  { id: 1, type: 'China' },
-  { id: 2, type: 'USA' }
+  { id: 1, type: 'online-table-chn' },
+  { id: 2, type: 'model-portfolio-usa' }
 ]
 
 export const tableSlice = createSlice({

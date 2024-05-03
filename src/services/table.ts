@@ -7,13 +7,13 @@ export const tableApi = createApi({
   reducerPath: 'tableApi',
   baseQuery: fetchBaseQuery({ baseUrl: Config.API_URL }),
   endpoints: (builder) => ({
-    getTableChina: builder.query<CompanyUSA, string>({
-      query: () => `online-table-chn`
-    }),
-    getTableUsa: builder.query<CompanyCHN, string>({
-      query: () => `model-portfolio-usa`
+    getTable: builder.query<Array<CompanyCHN | CompanyUSA>, string>({
+      query: (type) => type,
+      transformResponse: (response: Array<CompanyCHN | CompanyUSA>) => {
+        return response
+      }
     })
   })
 })
 
-export const { useGetTableChinaQuery, useGetTableUsaQuery } = tableApi
+export const { useGetTableQuery } = tableApi
